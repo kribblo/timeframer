@@ -2,19 +2,29 @@
   "name": "timeframer",
   "version": "0.0.1",
   "description": "Background setTimeout and setInterval via Webworkers in an iframe.",
-  "main": "timeframer.js",
+  "main": "src/timeframer.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "browserify -s timeframer -o dist/timeframer.js src/timeframer-wrapper.js",
+    "test": "echo \"Warning: no test specified\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kribblo/timeframer.git"
   },
-  "keywords": ["setTimeout", "setInterval", "WebWorker", "IE", "Edge"],
+  "keywords": [
+    "setTimeout",
+    "setInterval",
+    "WebWorker",
+    "IE",
+    "Edge"
+  ],
   "author": "Kristoffer Lundén <kristoffer.lunden@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kribblo/timeframer/issues"
   },
-  "homepage": "https://github.com/kribblo/timeframer#readme"
+  "homepage": "https://github.com/kribblo/timeframer#readme",
+  "devDependencies": {
+    "browserify": "^14.1.0"
+  }
 }
