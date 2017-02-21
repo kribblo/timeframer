@@ -8,7 +8,7 @@ Initial proof-of-concept.
 
 ## TODO
 
-* dist directory
-* npm/browserify
+* npm
 * gh-pages
-* Usage
+* usage
+* test case
