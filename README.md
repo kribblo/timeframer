@@ -9,11 +9,17 @@ Initial proof-of-concept.
 ## TODO
 
 * npm
-* gh-pages
 * usage
 * test case
 
 ## Development
 
+### Update dist
+
     npm install
     npm run build
+
+### Publish to gh-pages
+
+    npm run www
+    

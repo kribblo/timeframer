@@ -5,7 +5,8 @@
   "main": "src/timeframer.js",
   "scripts": {
     "build": "browserify -s timeframer -t uglifyify -o dist/timeframer.js src/timeframer-wrapper.js",
-    "test": "echo \"Warning: no test specified\""
+    "test": "echo \"Warning: no test specified\"",
+    "www": "git subtree push --prefix dist origin gh-pages"
   },
   "repository": {
     "type": "git",
