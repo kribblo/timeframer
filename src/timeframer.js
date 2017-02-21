@@ -1,5 +1,8 @@
 module.exports = function(frameSrc, window) {
 
+    window = window || {};
+    window.document = window.document || document;
+
     var channel = new MessageChannel();
     var worker = channel.port1;
 
@@ -67,5 +70,8 @@ module.exports = function(frameSrc, window) {
     };
 
     timeframer.src = frameSrc;
+
     window.document.body.appendChild(timeframer);
+
+    return window;
 };
