@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>Timeframer</title>
+<script>
+    var worker = new Worker('timeframer-worker.js');
+
+    window.addEventListener('message', function(e) {
+        if(e.ports.length > 0) {
+            var port = e.ports[0];
+            port.onmessage = function(e) {
+                worker.postMessage(e.data);
+            };
+            worker.addEventListener('message', function(e) {
+                port.postMessage(e.data);
+            });
+        }
+    });
+</script>
