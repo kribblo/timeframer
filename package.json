@@ -4,7 +4,7 @@
   "description": "Background setTimeout and setInterval via Webworkers in an iframe.",
   "main": "src/timeframer.js",
   "scripts": {
-    "build": "browserify -s timeframer -o dist/timeframer.js src/timeframer-wrapper.js",
+    "build": "browserify -s timeframer -t uglifyify -o dist/timeframer.js src/timeframer-wrapper.js",
     "test": "echo \"Warning: no test specified\""
   },
   "repository": {
@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/kribblo/timeframer#readme",
   "devDependencies": {
-    "browserify": "^14.1.0"
+    "browserify": "^14.1.0",
+    "uglifyify": "^3.0.4"
   }
 }

@@ -34,7 +34,7 @@ module.exports = function(frameSrc, window) {
         var args = stored.args;
 
         fn.apply(null, args);
-    }
+    };
 
     window.setTimeout = function(fn, delay) {
         var args = Array.prototype.slice.call(arguments, 2);

@@ -12,3 +12,8 @@ Initial proof-of-concept.
 * gh-pages
 * usage
 * test case
+
+## Development
+
+    npm install
+    npm run build
