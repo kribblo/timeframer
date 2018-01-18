@@ -8,4 +8,4 @@ var root = src.substring(0, src.lastIndexOf('/'));
 
 var frameSrc = root + '/timeframer.html';
 
-timeframer(frameSrc, window);
+module.exports = timeframer(frameSrc);

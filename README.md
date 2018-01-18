@@ -14,20 +14,37 @@ This is an initial proof-of-concept.
 
 From a webpage, make a `<script>` tag with `src` pointing to `timeframer.js` where it and `timeframer.html` is hosted.
 
-For instance, it is hosted on GitHub pages at <https://kribblo.github.io/timeframer/timeframer.js>, example:
+`setTimeout`, `clearTimeout`, `setInterval` and `clearInterval` will all be available on the global `window.timeframer`.
+
+You can host it yourself (the `dist` folder), and it's also hosted on GitHub pages at <https://kribblo.github.io/timeframer/timeframer.js>, example:
 
 ```html
 <script src="https://kribblo.github.io/timeframer/timeframer.js"></script>
+<script>
+    let i = 1;
+    let interval = timeframer.setInterval(function() {
+        console.log('Interval', i++)
+    }, 500)
+    timeframer.setTimeout(function() {
+        timeframer.clearInterval(interval)
+    }, 1600);
+</script>
 ```
 
-**Note:** this will overwrite the regular `window.setTimeout` and `window.setInterval` so all of them will run all the time in the background.
+### Override window.setTimeout and friends
 
-For a more subtle approach, `src/timeframer.js` can be included as a module and return another object containing the methods.
+```javascript
+window.setTimeout = timeframer.setTimeout;
+window.setInterval = timeframer.setInterval;
+window.clearTimeout = timeframer.clearTimeout;
+window.clearInterval = timeframer.clearInterval;
+```
+
+Use caution. If you do this, all timers and intervals in the page will run at full speed in the background, this should only be used where it is needed.
 
 ## TODO
 
-* npm + usage
-* test case/example
+* test case/example page
 
 ## Development
 

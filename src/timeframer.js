@@ -10,13 +10,13 @@ module.exports = function(frameSrc, global) {
     var timeouts = {};
     var intervals = {};
 
-    var timeframer = document.createElement('iframe');
-    timeframer.setAttribute('frameBorder', '0');
-    timeframer.style.width = 0;
-    timeframer.style.height = 0;
+    var timeframe = document.createElement('iframe');
+    timeframe.setAttribute('frameBorder', '0');
+    timeframe.style.width = 0;
+    timeframe.style.height = 0;
 
-    timeframer.onload = function() {
-        timeframer.contentWindow.postMessage('TIMEFRAMER', '*', [channel.port2]);
+    timeframe.onload = function() {
+        timeframe.contentWindow.postMessage('TIMEFRAMER', '*', [channel.port2]);
     };
 
     worker.onmessage = function(e) {
@@ -69,9 +69,9 @@ module.exports = function(frameSrc, global) {
         delete intervals[id];
     };
 
-    timeframer.src = frameSrc;
+    timeframe.src = frameSrc;
 
-    global.document.body.appendChild(timeframer);
+    global.document.body.appendChild(timeframe);
 
     return global;
 };
