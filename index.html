@@ -6,6 +6,20 @@
     </head>
     <body>
         <h1>Timeframer</h1>
-        <p><a href="https://github.com/kribblo/timeframer">GitHub</a></p>
+        <p><a href="https://github.com/kribblo/timeframer">GitHub Page</a></p>
+        <p>This counter updates once every second even in the background: <span id="timeframer">0</span></p>
+        <p>This counter does not: <span id="regular">0</span></p>
+        <p>The difference should be noticeable, but how much the regular counter will lag depends on the browser.</p>
+        <script src="timeframer.js"></script>
+        <script>
+            let timeframerCounter = 1;
+            let regularCounter = 1;
+            timeframer.setInterval(function() {
+                document.getElementById('timeframer').textContent = timeframerCounter++;
+            }, 1000);
+            window.setInterval(function() {
+                document.getElementById('regular').textContent = regularCounter++;
+            }, 1000);
+        </script>
     </body>
 </html>
