@@ -1,7 +1,7 @@
-module.exports = function(frameSrc, window) {
+module.exports = function(frameSrc, global) {
 
-    window = window || {};
-    window.document = window.document || document;
+    global = global || {};
+    global.document = global.document || document;
 
     var channel = new MessageChannel();
     var worker = channel.port1;
@@ -39,7 +39,7 @@ module.exports = function(frameSrc, window) {
         fn.apply(null, args);
     };
 
-    window.setTimeout = function(fn, delay) {
+    global.setTimeout = function(fn, delay) {
         var args = Array.prototype.slice.call(arguments, 2);
         timeoutId += 1;
         delay = delay || 0;
@@ -49,12 +49,12 @@ module.exports = function(frameSrc, window) {
         return id;
     };
 
-    window.clearTimeout = function(id) {
+    global.clearTimeout = function(id) {
         worker.postMessage({command: 'clearTimeout', id: id});
         delete timeouts[id];
     };
 
-    window.setInterval = function(fn, delay) {
+    global.setInterval = function(fn, delay) {
         var args = Array.prototype.slice.call(arguments, 2);
         timeoutId += 1;
         delay = delay || 0;
@@ -64,14 +64,14 @@ module.exports = function(frameSrc, window) {
         return id;
     };
 
-    window.clearInterval = function(id) {
+    global.clearInterval = function(id) {
         worker.postMessage({command: 'clearInterval', id: id});
         delete intervals[id];
     };
 
     timeframer.src = frameSrc;
 
-    window.document.body.appendChild(timeframer);
+    global.document.body.appendChild(timeframer);
 
-    return window;
+    return global;
 };
